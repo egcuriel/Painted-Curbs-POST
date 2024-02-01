@@ -1,0 +1,83 @@
+<div
+  id="registerView"
+  class="container jumbotron p-4"
+  ng-controller="registerController"
+>
+  <form name="myForm">
+    <div class="form-group">
+      <h1 class="h3 mb-3 text-center">User Registration</h1>
+      <input
+        name="firstName"
+        ng-required="true"
+        ng-maxlength="15"
+        ng-model="firstName"
+        type="text"
+        class="form-control mt-3"
+        placeholder="First Name"
+      />
+      <span
+        ng-show="myForm.firstName.$error.maxlength"
+        class="badge badge-danger"
+        >Exceeded max length of 15</span
+      >
+
+      <input
+        name="lastName"
+        ng-required="true"
+        ng-maxlength="30"
+        ng-model="lastName"
+        type="text"
+        class="form-control mt-3"
+        placeholder="Last Name"
+      />
+
+      <span
+        ng-show="myForm.lastName.$error.maxlength"
+        class="badge badge-danger"
+        >Exceeded max length of 30</span
+      >
+
+      <input
+        name="email"
+        ng-model="email"
+        ng-required="true"
+        type="text"
+        ng-pattern="/^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/"
+        class="form-control mt-3"
+        placeholder="Email"
+      />
+
+      <span ng-show="myForm.email.$error.pattern" class="badge badge-danger"
+        >Invalid Email</span
+      >
+
+      <input
+        name="password"
+        ng-model="password"
+        ng-required="true"
+        ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/"
+        type="text"
+        class="form-control mt-3"
+        placeholder="Password"
+      />
+      <div ng-show="myForm.password.$error.pattern" class="alert alert-danger">
+        Password Requirements:<br />
+        At least one upper-case alphabetical character<br />
+        At least one lower-case letter alphabetical character<br />
+        At least one numeric character<br />
+        At least one special character<br />
+        Must contain a minimum of eight characters<br />
+      </div>
+
+      <button
+        ng-click="register()"
+        class="btn btn-lg btn-primary btn-block mt-3"
+        type="button"
+      >
+        Register
+      </button>
+
+      <div ng-show="status" class="alert alert-info mt-3">{{ status }}</div>
+    </div>
+  </form>
+</div>

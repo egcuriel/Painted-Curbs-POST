@@ -1,0 +1,267 @@
+<div
+  id="searchView"
+  ng-controller="searchController"
+  class="container jumbotron p-4 view"
+  ng-init="load();citySearch($index)"
+>
+  <h1 class="h3 mb-3 text-center">Browse our Database by City</h1>
+
+  <div class="jumbotron">
+    <ul class="list-group list-group-horizontal">
+      <li ng-repeat="city in cities" class="list-group-item">
+        <a
+          ng-click="citySearch($index)"
+          data-toggle="collapse"
+          data-target="#collapseFour"
+          aria-expanded="false"
+          aria-controls="collapseFour"
+          class="link"
+          >{{city}}</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button
+            class="btn btn-link"
+            data-toggle="collapse"
+            data-target="#collapseOne"
+            aria-expanded="false"
+            aria-controls="collapseOne"
+          >
+            Search by Zip code
+          </button>
+        </h5>
+      </div>
+
+      <div
+        id="collapseOne"
+        class="collapse"
+        aria-labelledby="headingOne"
+        data-parent="#accordion"
+      >
+        <div class="card-body">
+          <div class="form-inline jumbotron">
+            <input
+              ng-model="condition"
+              placeholder="Zip Code"
+              class="form-control m-1"
+            />
+            <button
+              ng-click="searchZipCode(); scrollTo('results')"
+              class="btn btn-primary"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapseFour"
+              aria-expanded="false"
+              aria-controls="collapseFour"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button
+            class="btn btn-link collapsed"
+            data-toggle="collapse"
+            data-target="#collapseTwo"
+            aria-expanded="false"
+            aria-controls="collapseTwo"
+          >
+            Search for an Address
+          </button>
+        </h5>
+      </div>
+      <div
+        id="collapseTwo"
+        class="collapse"
+        aria-labelledby="headingTwo"
+        data-parent="#accordion"
+      >
+        <div class="card-body">
+          <input
+            type="number"
+            ng-model="streetNum"
+            class="form-control mb-3"
+            placeholder="Street Number"
+          />
+          <select
+            ng-model="streetDirection"
+            ng-options="x for x in streetDirections"
+            class="form-control mb-3"
+            placeholder="Street Direction"
+          >
+            <option value="">Street Direction</option>
+          </select>
+          <input
+            type="text"
+            ng-model="streetName"
+            class="form-control mb-3"
+            placeholder="Street Name"
+          />
+          <select
+            ng-model="streetType"
+            ng-options="x for x in streetTypes"
+            class="form-control mb-3"
+            placeholder="Street Type"
+          >
+            <option value="">Street Type</option>
+          </select>
+          <input
+            type="text"
+            ng-model="city"
+            class="form-control mb-3"
+            placeholder="City"
+          />
+          <input
+            type="text"
+            ng-model="zipCode"
+            class="form-control mb-3"
+            placeholder="Zip code"
+          />
+          <button
+            ng-click="searchAddress()"
+            class="btn btn-lg btn-primary btn-block"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseFour"
+            aria-expanded="false"
+            aria-controls="collapseFour"
+          >
+            Search for Address
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+          <button
+            class="btn btn-link collapsed"
+            data-toggle="collapse"
+            data-target="#collapseThree"
+            aria-expanded="false"
+            aria-controls="collapseThree"
+          >
+            Search By Coordinates
+          </button>
+        </h5>
+      </div>
+      <div
+        id="collapseThree"
+        class="collapse"
+        aria-labelledby="headingThree"
+        data-parent="#accordion"
+      >
+        <div class="card-body">
+          <input
+            type="text"
+            ng-model="latitude"
+            class="form-control mb-3"
+            placeholder="Latitude"
+          />
+          <input
+            type="text"
+            ng-model="longitude"
+            class="form-control mb-3"
+            placeholder="Longitude"
+          />
+          <button
+            ng-click="searchCoordinates()"
+            class="btn btn-lg btn-primary btn-block"
+            type="button"
+            data-toggle="collapse"
+            data-target="#collapseFour"
+            aria-expanded="false"
+            aria-controls="collapseFour"
+          >
+            Search for Coordinates
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ng-hide" id="results" ng-show="scopes">
+      <div class="card-body">
+        <div ng-show="scopes" class="ng-hide">
+          <div id="results">
+            <p class="text-center font-weight-bold">RESULTS</p>
+            <ul class="list-group" id="results">
+              <li ng-repeat="reportItem in reports" class="list-group-item">
+                <p class="text-center">
+                  <strong>Report ID:</strong> {{ reportItem._id }}
+                </p>
+                <br />
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>Details</th>
+                    </tr>
+                    <tr>
+                      <td>Created</td>
+                      <td>{{ reportItem.created }}</td>
+                    </tr>
+                    <tr>
+                      <td>Status</td>
+                      <td>{{ reportItem.status }}</td>
+                    </tr>
+                    <tr>
+                      <td>Details</td>
+                      <td>{{ reportItem.details }}</td>
+                    </tr>
+                    <tr>
+                      <td>Curb Color</td>
+                      <td>{{ reportItem.curbColor }}</td>
+                    </tr>
+                    <tr>
+                      <td>Street Number</td>
+                      <td>{{ reportItem.streetNum }}</td>
+                    </tr>
+                    <tr>
+                      <td>Street Direction</td>
+                      <td>{{ reportItem.streetDirection }}</td>
+                    </tr>
+                    <tr>
+                      <td>Street Name</td>
+                      <td>{{ reportItem.streetName }}</td>
+                    </tr>
+                    <tr>
+                      <td>Street Type</td>
+                      <td>{{ reportItem.streetType }}</td>
+                    </tr>
+                    <tr>
+                      <td>City</td>
+                      <td>{{ reportItem.city }}</td>
+                    </tr>
+                    <tr>
+                      <td>Zip Code</td>
+                      <td>{{ reportItem.zipCode }}</td>
+                    </tr>
+                    <tr>
+                      <td>Latitude</td>
+                      <td>{{ reportItem.latitude }}</td>
+                    </tr>
+                    <tr>
+                      <td>Longitude</td>
+                      <td>{{ reportItem.longitude }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

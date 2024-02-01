@@ -1,0 +1,81 @@
+<div
+  id="formView"
+  class="container jumbotron p-4"
+  ng-controller="formController"
+>
+  <div class="jumbotron p-4">
+    <form class="text-center">
+      <h1 class="h3 mb-3">Form</h1>
+      <select
+        ng-model="curbColor"
+        ng-options="x for x in curbColors"
+        class="form-control mb-3"
+        placeholder="Curb color"
+      >
+        <option value="">Color of Curb</option>
+      </select>
+      <input
+        type="text"
+        ng-model="streetNum"
+        class="form-control mb-3"
+        placeholder="Street Number"
+      />
+      <select
+        ng-model="streetDirection"
+        ng-options="x for x in streetDirections"
+        class="form-control mb-3"
+        placeholder="Street Direction"
+      >
+        <option value="">Street Direction</option>
+      </select>
+      <input
+        type="text"
+        ng-model="streetName"
+        class="form-control mb-3"
+        placeholder="Street Name"
+      />
+      <select
+        ng-model="streetType"
+        ng-options="x for x in streetTypes"
+        class="form-control mb-3"
+        placeholder="Street Type"
+      >
+        <option value="">Street Type</option>
+      </select>
+      <input
+        type="text"
+        ng-model="city"
+        class="form-control mb-3"
+        placeholder="City"
+      />
+      <input
+        type="text"
+        ng-model="zipCode"
+        class="form-control mb-3"
+        placeholder="Zip code"
+      />
+      <input
+        type="text"
+        ng-model="latitude"
+        class="form-control mb-3"
+        placeholder="Latitude (Optional)"
+      />
+      <input
+        type="text"
+        ng-model="longitude"
+        class="form-control mb-3"
+        placeholder="Longitude (Optional)"
+      />
+
+      <button
+        ng-click="submit()"
+        class="btn btn-lg btn-primary btn-block"
+        type="button"
+      >
+        Submit
+      </button>
+
+      <div ng-show="status" class="alert alert-info mt-3">{{ status }}</div>
+    </form>
+  </div>
+</div>

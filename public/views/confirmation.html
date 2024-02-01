@@ -1,0 +1,23 @@
+<div
+  id="confirmationView"
+  class="container jumbotron p-4 text-center"
+  ng-controller="confirmationController"
+  ng-init="load()"
+>
+  <div>
+    <h2>THANK YOU!</h2>
+    <br />
+    <h3>Your report has been submitted</h3>
+  </div>
+
+  <div>
+    <p>
+      Report ID: {{id}}<br />
+      <em>Please keep for future reference</em>
+    </p>
+  </div>
+
+  <div class="text-center">
+    <a href="#!/form">Submit a new report</a>
+  </div>
+</div>

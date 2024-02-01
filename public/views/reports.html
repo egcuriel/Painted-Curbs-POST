@@ -1,0 +1,104 @@
+<div
+  ng-controller="reportsController"
+  ng-init="loadReports()"
+  class="container jumbotron p-4 view"
+  class="reportsView"
+>
+  <!-- <div class="view"> -->
+  <div class="container jumbotron p-4">
+    <p class="text-center font-weight-bold">RESULTS</p>
+    <div class="buttons">
+      <button
+        ng-click="deleteAll()"
+        class="btn btn-danger ng-hide"
+        ng-show="admin"
+      >
+        DELETE ALL
+      </button>
+    </div>
+
+    <ul class="list-group" id="results">
+      <li ng-repeat="reportItem in reports" class="list-group-item">
+        <p class="text-center">
+          <strong>Report ID:</strong> {{ reportItem._id }}
+        </p>
+        <br />
+        <table>
+          <tbody>
+            <tr>
+              <th>Details</th>
+            </tr>
+            <tr>
+              <td>Created</td>
+              <td>{{ reportItem.created }}</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>{{ reportItem.status }}</td>
+            </tr>
+            <tr>
+              <td>Details</td>
+              <td>{{ reportItem.details }}</td>
+            </tr>
+            <tr>
+              <td>Curb Color</td>
+              <td>{{ reportItem.curbColor }}</td>
+            </tr>
+            <tr>
+              <td>Street Number</td>
+              <td>{{ reportItem.streetNum }}</td>
+            </tr>
+            <tr>
+              <td>Street Direction</td>
+              <td>{{ reportItem.streetDirection }}</td>
+            </tr>
+            <tr>
+              <td>Street Name</td>
+              <td>{{ reportItem.streetName }}</td>
+            </tr>
+            <tr>
+              <td>Street Type</td>
+              <td>{{ reportItem.streetType }}</td>
+            </tr>
+            <tr>
+              <td>City</td>
+              <td>{{ reportItem.city }}</td>
+            </tr>
+            <tr>
+              <td>Zip Code</td>
+              <td>{{ reportItem.zipCode }}</td>
+            </tr>
+            <tr>
+              <td>Latitude</td>
+              <td>{{ reportItem.latitude }}</td>
+            </tr>
+            <tr>
+              <td>Longitude</td>
+              <td>{{ reportItem.longitude }}</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="buttons">
+                  <button
+                    ng-click="deleteReport(reportItem._id)"
+                    class="btn btn-danger ng-hide"
+                    ng-show="role"
+                  >
+                    DELETE
+                  </button>
+                  <button
+                    ng-click="updateReport(reportItem._id)"
+                    class="btn btn-success ng-hide"
+                    ng-show="role"
+                  >
+                    UPDATE
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </div>
+</div>

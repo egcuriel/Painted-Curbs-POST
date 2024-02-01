@@ -1,0 +1,40 @@
+<div
+  id="userHomeView"
+  class="container jumbotron p-4"
+  ng-controller="userhomeController"
+  ng-init="load()"
+>
+  <div ng-show="admin" class="text-center" id="admin">Admin Account</div>
+
+  <div>
+    <p>Hello {{name}}!</p>
+  </div>
+
+  <div class="card text-center" style="width: 18rem">
+    <div class="card-body">
+      <h5 class="card-title">Create New Report</h5>
+      <p class="card-text"></p>
+      <a href="#!/form" class="btn btn-primary">GO TO FORM</a>
+    </div>
+  </div>
+
+  <div class="card text-center" style="width: 18rem" ng-hide="admin">
+    <div class="card-body">
+      <h5 class="card-title">View My Reports</h5>
+      <p class="card-text"></p>
+      <button ng-click="myDatabase()" class="btn btn-primary">
+        GO TO REPORTS
+      </button>
+    </div>
+  </div>
+
+  <div class="card text-center" style="width: 18rem" ng-show="admin">
+    <div class="card-body">
+      <h5 class="card-title">View Database of all Reports</h5>
+      <p class="card-text"></p>
+      <button ng-click="database()" class="btn btn-primary">
+        GO TO DATABASE
+      </button>
+    </div>
+  </div>
+</div>

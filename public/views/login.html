@@ -1,0 +1,32 @@
+<div
+  id="loginView"
+  class="container jumbotron p-4"
+  ng-controller="loginController"
+>
+  <form class="form-signin text-center">
+    <h1 class="h3 mb-3">Login</h1>
+    <input
+      ng-model="email"
+      type="email"
+      class="form-control mb-3"
+      placeholder="Email Address"
+      required
+    />
+    <input
+      ng-model="password"
+      type="password"
+      class="form-control mb-3"
+      placeholder="Password"
+      required
+    />
+    <button
+      ng-click="login()"
+      class="btn btn-lg btn-primary btn-block"
+      type="button"
+    >
+      Login
+    </button>
+
+    <div ng-show="status" class="alert alert-info mt-3">{{ status }}</div>
+  </form>
+</div>
