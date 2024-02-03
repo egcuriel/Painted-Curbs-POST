@@ -16,7 +16,7 @@ module.exports = (req, res, next) => {
   const token = authArray[1];
 
   try {
-    const payLoad = jwt.verify(token, process.env["JWT_KEY"]);
+    const payLoad = jwt.verify(token, "boogie");
     req.user = payLoad;
     next();
   } catch {
