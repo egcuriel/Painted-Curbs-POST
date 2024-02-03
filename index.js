@@ -12,10 +12,12 @@ app.use("/api/users", userRoutes);
 app.use("/api/reports", reportRoutes);
 
 
-app.listen(3001, (err) => {
+app.listen(process.env['PORT'], (err) => {
   if (err) {
     console.log("ERROR!!!!");
   } else {
     console.log("Server started on port 3001");
   }
 });
+
+
