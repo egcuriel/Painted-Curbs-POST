@@ -46,7 +46,7 @@ router.post("/login", (req, res) => {
             role: result.role,
           };
 
-          let token = jwt.sign(payLoad, process.env['JWT_KEY']);
+          let token = jwt.sign(payLoad, "boogie");
 
           res.status(200).send({ jwt: token });
           console.log(payLoad);
@@ -70,7 +70,7 @@ router.get("/:id", (req, res) => {
         res.status(404).send("Not Found!");
       }
     })
-    .catch((err) => {});
+    .catch((err) => { });
 });
 
 // POST - Create new user
