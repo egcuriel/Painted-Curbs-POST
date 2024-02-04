@@ -1,0 +1,1 @@
+To run this project locally, define a .env file to load environment variables. A sample .env file has been provided with the variables needed to run this project locally.
