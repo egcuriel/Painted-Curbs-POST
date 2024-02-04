@@ -17,6 +17,7 @@ app.listen(process.env['PORT'], (err) => {
     console.log("ERROR!!!!");
   } else {
     console.log("Server started on port 3001");
+    console.log("Port:" + process.env['PORT'])
   }
 });
 
